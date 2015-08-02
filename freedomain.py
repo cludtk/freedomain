@@ -1,5 +1,6 @@
 from flask import Flask
 import time
+from constants import *
 
 app = Flask(__name__)
 
@@ -72,5 +73,7 @@ def freedomain(count):
 
 
 if __name__ == '__main__':
-    app.run(host="172.31.27.41", port=8080)
-    #app.run()
+    if not __debug__:
+        app.run(host="172.31.27.41", port=8080)
+    else:
+        app.run()
