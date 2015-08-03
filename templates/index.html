@@ -5,9 +5,11 @@
     <title></title>
 </head>
 <body>
-<a href="/next">NEXT</a>
+<a href="/{{ next }}">NEXT</a>
 
-<b>{{ name }}</b>
+{% for item in array %}
+        {{ item }}
+{% endfor %}
 
 </body>
 </html>

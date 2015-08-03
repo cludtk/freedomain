@@ -15,10 +15,19 @@ def getDifTime(s):
 
 @app.route('/<count>')
 def freedomain(count):
-    test = fcsc.increment(str(count))
+    #currentCSC = fcsc.increment(count)
 
-    currentCSC = fcsc.increment(currentCSC)
-    return render_template('index.html', name=currentCSC)
+    array = []
+    i = 0
+    localCSC = count
+    while 1:
+        if i == 50:
+            break
+        localCSC = fcsc.increment(localCSC)
+        array.append(currentCSC)
+        i +=1
+
+    return render_template('index.html', arr=array, next=array[len(array)])
 
 
 if __name__ == '__main__':
