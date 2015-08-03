@@ -18,10 +18,15 @@
             a:visited {
                 color: #5c4fde;
             }
+            #next {
+                background-color: #f0efff;
+                color: black;
+                font-size: 300%;
+            }
     </style>
 </head>
 <body>
-<a href="/{{ next }}">NEXT</a>
+<a id="next" href="/{{ next }}">NEXT</a>
 
 {% for item in arr %}
     <a href="/ck/{{ item }}">{{ item }}</a>
