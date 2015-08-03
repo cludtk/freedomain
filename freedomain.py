@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for
 import time
 from constants import *
 from csc import CSC
@@ -13,6 +13,10 @@ def getDifTime(s):
     endTime = current_milli_time2()
     return float(endTime - s) / 1000
 
+@app.route('/')
+def index():
+    return redirect('/0')
+
 @app.route('/<count>')
 def freedomain(count):
     #currentCSC = fcsc.increment(count)
@@ -21,13 +25,18 @@ def freedomain(count):
     i = 0
     localCSC = count
     while 1:
-        if i == 50:
+        if i == 10000:
             break
         localCSC = fcsc.increment(localCSC)
-        array.append(currentCSC)
+        array.append(localCSC)
         i +=1
 
-    return render_template('index.html', arr=array, next=array[len(array)])
+    return render_template('index.html', arr=array, next=array[len(array)-1])
+
+@app.route('/ck/<domain>')
+def checkdomain(domain):
+    return 'THIS IS YOUR - ' + domain
+
 
 
 if __name__ == '__main__':
