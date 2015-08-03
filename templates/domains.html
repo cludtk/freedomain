@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+        body {
+            background-color: #84dec9;
+        }
+        #free {
+            background-color: #FFEBCD;
+            font-size: 120%;
+        }
+        #paid {
+            background-color: #FFEBCD;
+            font-size: 120%;
+        }
+        h6 {
+            font-size: 250%;
+        }
+        TABLE {
+            background: white; /* Цвет фона таблицы */
+            color: white; /* Цвет текста */
+        }
+        TD, TH {
+            background: #698078; /* Цвет фона ячеек */
+            padding: 5px; /* Поля вокруг текста */
+        }
+    </style>
+</head>
+<body>
+
+<div id="title" align="center">
+    <h6>DOMAIN<p>{{ free[0]['domain'] }}</p> </h6>
+</div>
+
+<div id="free">
+<b> Free Domains </b>
+    <table border="1" cellspacing="1">
+       <tr>
+           <th>DOMAIN</th>
+           <th>STATUS</th>
+           <th>TYPE</th>
+           <th>CURRENCY</th>
+           <th>PRICE</th>
+       </tr>
+    {% for item in free %}
+    <tr><td>{{ item['tld'] }}</td><td>{{ item['status'] }}</td><td>{{ item['type'] }}</td><td>{{ item['currency'] }}</td><td>{{ item['price_cent'] }}</td></tr>
+    {% endfor %}
+    </table>
+</div>
+
+<div id="paid">
+<b> Paid Domains </b>
+    <table border="1" cellspacing="1">
+       <tr>
+           <th>DOMAIN</th>
+           <th>CURRENCY</th>
+           <th>PRICE</th>
+       </tr>
+    {% for item in paid %}
+    <tr><td>{{ item['tld'] }}</td><td>{{ item['currency'] }}</td><td>{{ item['price_cent'] }}</td></tr>
+    {% endfor %}
+    </table>
+</div>
+
+</body>
+</html>

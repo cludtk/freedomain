@@ -1,7 +1,10 @@
-from flask import Flask, render_template, redirect, url_for
+import json
+from flask import Flask, render_template, redirect, url_for, Response
 import time
+from pip._vendor import requests
 from constants import *
 from csc import CSC
+from tkmodel import Domain_model
 
 app = Flask(__name__)
 
@@ -19,7 +22,6 @@ def index():
 
 @app.route('/<count>')
 def freedomain(count):
-    #currentCSC = fcsc.increment(count)
 
     array = []
     i = 0
@@ -35,7 +37,15 @@ def freedomain(count):
 
 @app.route('/ck/<domain>')
 def checkdomain(domain):
-    return 'THIS IS YOUR - ' + domain
+
+    domain = {'domain': domain, 'tld': ''}
+    req = requests.post('https://my.freenom.com/includes/domains/fn-available.php', domain)
+    res = Response(req)
+    json_dict = json.loads(res.data)
+
+    tkmodel = Domain_model(json_dict)
+
+    return render_template('domains.html', free=tkmodel.free_domains, paid=tkmodel.paid_domains)
 
 
 
