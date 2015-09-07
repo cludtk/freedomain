@@ -50,7 +50,7 @@ def checkdomain(domain):
 
 
 if __name__ == '__main__':
-    app_debug = True
+    app_debug = False
     if not app_debug:
         app.run(host="172.31.27.41", port=80)
     else:
