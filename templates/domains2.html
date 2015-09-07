@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Our Company</title>
+<link href="{{ url_for('static', filename='site.css') }}" rel="stylesheet">
+</head>
+<body>
+
+<nav id="nav01"><ul id="menu"><li><a href="/{{ free[0]['domain'] }}">Home</a></li></ul></nav>
+
+<div id="main">
+<div id="title" align="center">
+    <h1>DOMAIN<p>{{ free[0]['domain'] }}</p> </h1>
+</div>
+
+
+<b> Free Domains </b>
+    <table border="1" cellspacing="1">
+       <tr>
+           <th>DOMAIN</th>
+           <th>STATUS</th>
+           <th>TYPE</th>
+           <th>CURRENCY</th>
+           <th>PRICE</th>
+       </tr>
+    {% for item in free %}
+    <tr><td>{{ item['tld'] }}</td><td>{{ item['status'] }}</td><td>{{ item['type'] }}</td><td>{{ item['currency'] }}</td><td>{{ item['price_cent'] }}</td></tr>
+    {% endfor %}
+    </table>
+
+</div>
+
+</body>
+</html>

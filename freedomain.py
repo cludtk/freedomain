@@ -33,7 +33,7 @@ def freedomain(count):
         array.append(localCSC)
         i +=1
 
-    return render_template('index.html', arr=array, next=array[len(array)-1])
+    return render_template('index2.html', arr=array, next=array[len(array)-1])
 
 @app.route('/ck/<domain>')
 def checkdomain(domain):
@@ -45,12 +45,12 @@ def checkdomain(domain):
 
     tkmodel = Domain_model(json_dict)
 
-    return render_template('domains.html', free=tkmodel.free_domains, paid=tkmodel.paid_domains)
+    return render_template('domains2.html', free=tkmodel.free_domains, paid=tkmodel.paid_domains)
 
 
 
 if __name__ == '__main__':
-    app_debug = False
+    app_debug = True
     if not app_debug:
         app.run(host="172.31.27.41", port=80)
     else:
